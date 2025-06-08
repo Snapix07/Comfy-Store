@@ -14,6 +14,8 @@ import Loading from './Loading'
 import CartItemsList from './CartItemsList'
 import CartTotals from './CartTotals'
 import CheckoutForm from './CheckoutForm'
+import OrdersList from './OrdersList'
+import ComplexPaginationContainer from './ComplexPaginationContainer'
 
 export {
   FormInput,
@@ -32,4 +34,6 @@ export {
   CartItemsList,
   CartTotals,
   CheckoutForm,
+  OrdersList,
+  ComplexPaginationContainer,
 }

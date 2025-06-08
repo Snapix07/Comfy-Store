@@ -4,16 +4,25 @@ import { customFetch } from '../utils'
 
 const url = 'products'
 
-export const loader = async ({ request }) => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries(),
-  ])
-  const resp = await customFetch(url, { params })
-
-  const products = resp.data.data
-  const meta = resp.data.meta
-  return { products, meta, params }
+const productsQuery = (params) => {
+  return {
+    queryKey: ['products', params],
+    queryFn: () => customFetch(url, { params }),
+  }
 }
+
+export const loader =
+  (queryClient) =>
+  async ({ request }) => {
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ])
+    const resp = await queryClient.ensureQueryData(productsQuery(params))
+
+    const products = resp.data.data
+    const meta = resp.data.meta
+    return { products, meta, params }
+  }
 
 const Products = () => {
   return (
