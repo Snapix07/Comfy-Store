@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, redirect } from 'react-router-dom'
 import FormInput from './FormInput'
 import SubmitBtn from './SubmitBtn'
-import { customFetch } from '../utils'
+import { customFetch, formatPrice } from '../utils'
 import { clearCart } from '../features/cart/cartSlice'
 import { toast } from 'react-toastify'
 
